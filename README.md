@@ -34,8 +34,7 @@
   * 例子
 * `-webkit-background-clip`截取背景图
   * `text`,为文字添上背景图片！[safari官方介绍](https://www.webkit.org/blog/164/background-clip-text/)
-  * 例子
-* `-webkit-background-composite`背景的复合模式
+  * 官方的方式，不支持非webkit的浏览器，如果要兼容，可用参考本例，综合使用了多个属性。
   * 例子
 * `-webkit-border-image`使用图片生成border
   * -webkit-border-image: <uri> <top> <right> <bottom> <left> <x_repeat> <y_repeat>;
@@ -44,15 +43,16 @@
 * `webkit box`综合介绍
   * 这是一个布局方式的整合，基于[w3c的CSS3布局](http://www.w3.org/TR/css3-layout/)。
   * todo http://www.html5rocks.com/en/tutorials/flexbox/quick/
-* `webkit-columns`定义文字分行的长度，与`-webkit-column-rule`何用，产生文字的间隔
-  * 例子https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule  
+* `webkit-columns`定义文字分行的长度，与`-webkit-column-rule`合用，产生文字的间隔
+  * [MOZ官方例子](https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule  )
 * `-webkit-marquee`CSS3的跑马灯
-  * 例子http://davidwalsh.name/webkit-marquee-css,http://media02.hongkiat.com/marquee-in-css/demo/index.html
+  * -webkit-marquee: [direction] [increment] [repetition] [style] [speed]
+  * [例子](http://ued.ctrip.com/blog/wp-content/webkitcss/prop/marquee-style.html)
 * `-webkit-mask`遮罩
-  * 例子http://css-tricks.com/webkit-image-wipes/
+  * [更多例子](http://css-tricks.com/webkit-image-wipes/)，**能做3个or3个以上的么？**
 * `-webkit-tap-highlight-color`，高亮颜色
   * 本指一个`a`或者`可点击元素`被tap后，其高亮的颜色。它和outline一起控制了元素蓝色的外框.
 * `-webkit-text-security`,将文字以密文显示
-  * 例子http://ued.ctrip.com/blog/wp-content/webkitcss/demo/text-security.html
+  * 例子
     
       

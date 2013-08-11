@@ -1,0 +1,329 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+ul,li,dl,dt,dd,p, h3 {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+}
+
+article {
+    padding: 15px;
+}
+
+.selectList .selectContainer {
+    width: 20%;
+    margin-right: 10px;
+    display: inline-block;
+    position: relative;
+}
+
+.selectList .selectContainer select {
+    width: 100%;
+}
+
+#selectContainer02:after {
+    content: "";
+    top: 7px;
+    right: 7px;
+    position: absolute;
+    display: inline-block;
+    font-size: 0;
+    border-top: 2px solid #666;
+    border-left: 2px solid #666;
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+    -webkit-transform: rotate(225deg);
+}
+
+#select02 {
+    -webkit-appearance: none;
+    -webkit-border-radius: 0;
+    border: solid 1px #D5D5D5;
+    border-top-color: #BDBDBD;
+    border-width: 1px;
+    color: #333;
+    font-size: 16px;
+    padding-right: 16px;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5),
+        to(#fdfdfd));
+    border-radius: 8px;
+    text-indent: 10px;
+}
+
+input[type=checkbox]:checked {
+    background: url(images/checkbox.png) no-repeat center center;
+    -webkit-background-size: 28px 28px;
+    -webkit-appearance: none;
+}
+
+input[type=checkbox],input[type=radio] {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 1em;
+    margin: 0 0.25em 0 0;
+    padding: 0;
+    width: 1.25em;
+    height: 1.25em;
+    -webkit-border-radius: 0.25em;
+    vertical-align: text-top;
+}
+
+input {
+    border: 1px solid #555;
+    padding: 0.5em;
+    font-size: 15px;
+    line-height: 1.2em;
+    width: 80%;
+    background: #fff;
+    background: -webkit-gradient(linear, left top, left bottom, from(#fff),
+        to(#ccc));
+    -webkit-appearance: none;
+    -webkit-box-shadow: 1px 1px 1px #fff;
+    -webkit-border-radius: 0.5em;
+}
+
+/*animation*/
+h1 {
+    font-size: 1.5em;
+    font-weight: normal;
+    margin: 0;
+}
+
+pre {
+    height: 100px;
+    width: 50%;
+    font-family: monospace;
+    font-size: 1em;
+    padding: 2px 5px;
+    color: #0f0;
+    background-color: #111;
+    border: 1px solid #030;
+    border-radius: 4px;
+    overflow: auto;
+    -webkit-appearance: textarea;
+}
+
+#anim {
+    display: block;
+    width: 14em;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #060;
+    border: 2px solid #393;
+    border-radius: 5px;
+    outline: 0 none;
+}
+
+#anim.enable {
+    color: #333;
+    background-color: #0c0;
+    box-shadow: 0 0 5px #0f0;
+    -webkit-animation: flash 1s ease 3;
+    -moz-animation: flash 1s ease 3;
+    -ms-animation: flash 1s ease 3;
+    -o-animation: flash 1s ease 3;
+    animation: flash 1s ease 3;
+}
+
+@-webkit-keyframes flash { 
+    50% {
+        opacity: 0;
+    }
+}
+
+/*backface visibility*/
+#experiment {
+    margin-top: 50px;
+    -webkit-perspective: 800;
+    -webkit-perspective-origin: 50% -200px;
+}
+
+#cube {
+    position: relative;
+    margin: 0 auto;
+    height: 400px;
+    width: 400px;
+    -webkit-transform-style: preserve-3d;
+    -webkit-animation: rotate 5s ease infinite;
+}
+
+.face {
+    position: absolute;
+    height: 360px;
+    width: 360px;
+    padding: 20px;
+    background-color: rgba(50, 50, 50, 0.7);
+}
+
+#cube .one  {
+    -webkit-transform: rotateX(90deg) translateZ(200px);
+}
+
+#cube .two {
+    -webkit-transform: translateZ(200px);
+}
+
+#cube .three {
+    -webkit-transform: rotateY(90deg) translateZ(200px);
+}
+
+#cube .four {
+    -webkit-transform: rotateY(180deg) translateZ(200px);
+}
+
+#cube .five {
+    -webkit-transform: rotateY(-90deg) translateZ(200px);
+}
+
+#cube .six {
+    -webkit-transform: rotateX(-90deg) translateZ(200px) rotate(180deg);
+}
+
+@-webkit-keyframes rotate {
+    0% {
+        -webkit-transform: rotateY(0deg);
+    }
+    25% {
+        -webkit-transform: rotateY(90deg);
+    }
+    50% {
+        -webkit-transform: rotateY(180deg);
+    }
+    75% {
+        -webkit-transform: rotateY(90deg);
+    }
+    100% {
+        -webkit-transform: rotateY(0deg);
+    }
+}
+
+#visibility {
+    -webkit-appearance: button;
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+/*TEXT CLIP*/
+.textClip {
+    font-size: 84px;
+    font-weight: bold;
+    margin: 0;
+    background: url(images/bg.jpg) repeat 0 0, white;
+    color: #FF8C00;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/*border-image*/
+.borderImg {
+    border-image-source: url(images/bg.jpg);
+    border-image-slice: 20;
+    border-image-width: 20px;
+    border-image-repeat: round;
+    border-image-outset: 20px;
+}
+
+/*webkit-columns*/
+.three-col {
+    margin-top: 400px;
+   -webkit-column-count: 3;
+   -webkit-column-gap : 20px;
+   -webkit-column-rule-color:  #ccc;
+   -webkit-column-rule-style: solid ;
+   -webkit-column-rule-width:  1px;
+}
+
+/*marquee*/
+.marquee {
+    height: 35px;
+    border: 1px solid #ad8e00;
+    background-color: #ffeb93;
+    line-height: 250%;
+    font-family: Tahoma, Arial, sans-serif;
+    margin-bottom: 10px;
+    width: 600px;
+    color: #6e5c06;
+    border-radius: 3px;
+    font-size: 10pt;
+    -webkit-box-shadow: inset 0px 1px 2px 0px rgba(201, 167, 31, 0.5), 0px 1px 0px 0px rgba(250, 250, 250, 0.3);
+    box-shadow: inset 0px 1px 2px 0px rgba(201, 167, 31, 0.5), 0px 1px 0px 0px rgba(250, 250, 250, 0.3);
+}
+
+.marquee .alternate {
+    -webkit-marquee: left medium infinite alternate normal;
+    overflow-x: -webkit-marquee;
+}
+
+.marquee.forwards {
+    -webkit-marquee: forwards medium infinite scroll normal;
+    overflow-x: -webkit-marquee;
+}
+
+.marquee.ahead {
+    -webkit-marquee: ahead medium infinite scroll normal;
+    overflow-x: -webkit-marquee;
+    text-align: center;
+}
+
+.marquee.scroll {
+    -webkit-marquee: auto medium infinite scroll normal;
+    overflow-x: -webkit-marquee;
+}
+
+/*mask*/
+#banner {
+    width: 800px;        /* Size of images, will collapse without */
+    height: 300px;
+    position: relative;  /* For abs. positioning inside */
+    border: 8px solid #eee;
+    -webkit-box-shadow: 1px 1px 3px rgba(0,0,0,0.75);
+}
+
+#banner div {
+    position: absolute; /* Top and left zero are implied */
+}
+
+/* Second one is on top */
+#banner div:nth-child(2) {
+    -webkit-animation: wipe 6s infinite;
+    -webkit-animation-delay: 3s;
+    -webkit-animation-direction: alternate;
+    -webkit-mask-size: 2000px 2000px;
+    -webkit-mask-image: -webkit-gradient(linear, left top, right bottom, 
+            color-stop(0.00,  rgba(0,0,0,1)),
+            color-stop(0.45,  rgba(0,0,0,1)),
+            color-stop(0.50,  rgba(0,0,0,0)),
+            color-stop(0.55,  rgba(0,0,0,0)),
+            color-stop(1.00,  rgba(0,0,0,0)));
+}
+
+@-webkit-keyframes wipe {
+    0% {
+        -webkit-mask-position: 0 0; /* Implied normally, but needed for animation */
+    }
+    100% {
+        -webkit-mask-position: -1200px -1200px;
+    }
+}
+
+/*text secret*/
+.discSec {
+    -webkit-text-security: disc;
+}
+
+.circleSec {
+    -webkit-text-security: circle;
+}
+
+.squareSec {
+    -webkit-text-security: square;
+}
