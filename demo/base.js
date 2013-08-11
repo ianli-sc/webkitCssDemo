@@ -57,3 +57,4 @@ document.getElementById('visibility').onclick = function() {
     }
     addedNone = !addedNone;
 }
+

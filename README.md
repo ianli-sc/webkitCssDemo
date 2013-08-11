@@ -40,9 +40,6 @@
   * -webkit-border-image: <uri> <top> <right> <bottom> <left> <x_repeat> <y_repeat>;
   * 除了table中`border-collapse`为`collapse`的所以元素可用
   * 例子
-* `webkit box`综合介绍
-  * 这是一个布局方式的整合，基于[w3c的CSS3布局](http://www.w3.org/TR/css3-layout/)。
-  * todo http://www.html5rocks.com/en/tutorials/flexbox/quick/
 * `webkit-columns`定义文字分行的长度，与`-webkit-column-rule`合用，产生文字的间隔
   * [MOZ官方例子](https://developer.mozilla.org/en-US/docs/Web/CSS/column-rule  )
 * `-webkit-marquee`CSS3的跑马灯
@@ -54,5 +51,13 @@
   * 本指一个`a`或者`可点击元素`被tap后，其高亮的颜色。它和outline一起控制了元素蓝色的外框.
 * `-webkit-text-security`,将文字以密文显示
   * 例子
-    
-      
+* `webkit box`综合介绍
+  * 这是一个布局方式的整合，基于[w3c的CSS3布局](http://www.w3.org/TR/css3-layout/)。
+  * 这个布局主要为了解决多行自适应宽度布局什么问题？
+    * float的元素，不能撑开父级的高度(一边固定，一边absolute也是如此)
+    * 固定长度的设计，只能说句`呵呵`
+    * 因此，W3C产出了Flexible box model，重点在`灵活`
+  * 使用方式
+    * container赋值`display: -webkit-box;box-orient: horizontal;`。形成横排的box
+    * cell使用`-webkit-box-flex: number;`来赋值某个子元素，占据空白位置的百分比
+       * 以3个子元素为例，为每个子元素赋值`-webkit-box-flex: 1;`，`-webkit-box-flex: n2;``-webkit-box-flex: 3;`.那么他们在自身宽度之外，还会占据剩余宽度X的X/(1+2+3)*number

@@ -5,6 +5,23 @@
         <title>CSS Demo of CSS in webkit</title>
         <link rel="stylesheet" href="base.css" />
         <link rel="stylesheet" href="jquery.mobile.min.css" />
+        <style>
+            .centerbox {
+                width: 350px;
+                height: 95px;
+                font-size: 14px;
+                border: 1px solid #555;
+                background : #CFC;
+                display: -webkit-box;
+                -webkit-box-orient: horizontal;
+                -webkit-box-pack: center;
+                -webkit-box-align: center;
+                display: box;
+                box-orient: horizontal;
+                box-pack: center;
+                box-align: center;
+}
+        </style>
     </head>
     <body>
         <article>
@@ -14,15 +31,15 @@
             <ul>
                 <li class="selectList">
                     <select class="selectContainer" id="select01">
-                        <option>选项1</option>
-                        <option>选项2</option>
-                        <option>选项3</option>
+                        <option>section1</option>
+                        <option>section2</option>
+                        <option>section3</option>
                     </select>
                     <div class="selectContainer" id="selectContainer02">
                         <select id="select02">
-                            <option>选项1</option>
-                            <option>选项2</option>
-                            <option>选项3</option>
+                            <option>section1</option>
+                            <option>section2</option>
+                            <option>section3</option>
                         </select>
                     </div>
                     <div class="selectContainer ui-select">
@@ -90,6 +107,16 @@
                     <div>address is <span class="circleSec">Hangzhou</span> huaxingshidao</div>
                     <div>phone is +86 138<span class="squareSec">8888</span>888</div>
                 <li>
+                <li>
+                    <div class="box">
+                        <div>un</div>
+                        <div>deux</div>
+                        <div>trois</div>
+                    </div>
+                    <div class="centerbox">
+                      <textarea>resize me, please</textarea>
+                    </div>
+                </li>
             </ul>
         </article>
         <script type="text/javascript" src="base.js"></script>
