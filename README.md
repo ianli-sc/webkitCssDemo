@@ -61,3 +61,80 @@
     * container赋值`display: -webkit-box;box-orient: horizontal;`。形成横排的box
     * cell使用`-webkit-box-flex: number;`来赋值某个子元素，占据空白位置的百分比
        * 以3个子元素为例，为每个子元素赋值`-webkit-box-flex: 1;`，`-webkit-box-flex: n2;``-webkit-box-flex: 3;`.那么他们在自身宽度之外，还会占据剩余宽度X的X/(1+2+3)*number
+    * 如果cell的宽度之和超过了父元素，会被撑开
+      * 如果子元素某个元素为input，它在mobile下默认宽度165px，可用为它赋值display: -webkit-box;它就能自适应宽度了。
+      * 如果是自己定义死的宽度，应当在布局考虑上避免这个情况。
+
+## HTML
+### ApplicationCache
+* `manifest`
+  * 优点
+    1. 离线使用
+    1. 本地保存加快加载速度
+    1. 减轻服务器负载。只当catch的内容变更才请求服务器
+  * 是个啥？咋个用？和浏览器自身的catch有什么区别？
+    * 就是一个简单的TEXT。
+    * 为html标签添加属性`manifest="file"`file指向某个manifest文件
+    * 区别：
+      * 传统：当服务器端文件修改后，浏览器会去获取信息，比较文件，决定是否重新拉去。
+      * manifest：当manifest本身没被修改时，根本不去请求服务器的内容。因而减少了请求。
+  * 使用后浏览器的行为
+    * 当manifest被定义后，浏览器直接从本地缓存去读取指定的被缓存的内容，而非发起http请求。
+    * 浏览器检测menifest在服务器上是否被更新
+    * 如果发现更新，浏览器下载新的manifest和manifest里列出的内容
+  * 注意点
+    * file可以是相对/绝对定位的文件。如果是绝对定位，需要同域。
+    * 返回的file的`mime-type`必须为`text/cache-manifest`
+    * 文件后缀建议以`manifest`,此外`appcache`，`cfm`,`mf`也被某些浏览器支持。但是`safari`**声称**只支持`manifest`结尾！（实际测试中，它似乎也支持`cfm`格式。。。你有深入研究么？）
+    * 不要在menifest里面写menifest自身，这样做会导致menifest失效
+  * 文件语法格式
+    * 第一行`CACHE MANIFEST`
+    * 以 `#` 开头的为注释
+    * 有主要3大功能块，以特定的字段`CACHE`,`NETWORK`,`FALLBACK`。分别代表需要缓存的内容，需要用户online使用的模块，加载文件失败后的处理
+  * 举个例子
+    * 文件体
+    > CACHE MANIFEST
+    > 
+	> CACHE:
+    > /favicon.ico
+    >
+	> NETWORK:
+    > login.php
+    >
+    > FALLBACK:
+    > *.html /offline.html
+     
+  * 更新文件
+    * js监控和操作文件更新，见[菜鸟教程](http://www.html5rocks.com/en/tutorials/appcache/beginner/#toc-updating-cache)
+    * 文件更新的条件：**manifest本身被改变**。常用的操作如下
+      * 在注释里面，更新时间戳
+      * 更新文件本身的内容
+      * 改变文件的顺序
+  * 缺点
+    * 它默认会catch整个HTML，对于HTML多变的场景完全不适应
+  * 更多相关介绍
+    * [导师级菜鸟教程](http://www.html5rocks.com/en/tutorials/appcache/beginner/#toc-updating-cache)
+    * [safari离线html开发](https://developer.apple.com/library/safari/documentation/iPhone/Conceptual/SafariJSDatabaseGuide/OfflineApplicationCache/OfflineApplicationCache.html#//apple_ref/doc/uid/TP40007256-CH7-SW2)
+    * [moz离线html应用介绍](https://developer.mozilla.org/en-US/docs/HTML/Using_the_application_cache)
+    * [appcatch.info](http://appcachefacts.info/)
+    * [口味蛮重的视频介绍](http://www.bennadel.com/blog/1944-Experimenting-With-HTML5-s-Cache-Manifest-For-Offline-Web-Applications.htm)
+
+### hashchange & popstate
+* `hash change`触发条件：url的hash值被改变(没有到有，有到更多，更多到更少，有到没有)
+  * `location.href += '#hash'`
+  * `history.back()` or `history.forward()`对bred的改变，涉及到了hash改变
+  * `location.hash` 的字符串改变操作
+* `popstate`触发：只在浏览器行为，跳转两个history entries时触发
+  * `history.pushState（state, title, href）`如果触发hash跳转，为history添加新的值，不触发`popstate`，浏览器不刷新（不是浏览器行为）
+  * `history.replaceState`如果更改当前hash，不为history添加新的值，不触发`popstate`，浏览器不刷新（不是浏览器行为）
+  * `location.href += '#hash'`会触发hash跳转，为history添加新的值
+  * `history.forward()` & `history.back()`同样触发`popstate`
+* 不理解的地方
+  * `history.pushState（state, title, href）`不会触发上诉任何响应，即使涉及到hash改变。
+  
+#### event handler
+* `popstate`可以通过e.state获取push进去的state的值
+* `history.pushState/replaceState（state, title, href）`可做如下改变
+  * href改变当前的最末尾文件名，eg：为href传值`abc.txt`,tmall.com/test.html变成了`tmall.com/abc.txt`；
+  * href改变hash和parameter，eg：为href传值`?123`,或者`#123`,tmall.com/test.html变成了`tmall.com/test.html?123`或者`tmall.com/test.html#123`；
+* 改变state可以起到剪短url的功能。用户刷新页面，浏览器会直接load这个被改变后的地址
